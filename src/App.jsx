@@ -1,25 +1,34 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Register from './pages/RegisterPage';
+import Login from './pages/LoginPage';
+import HomePage from './pages/HomePage';
 import EntriesPage from './pages/EntriesPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import ContentPage from './pages/ContentTypePage/ContentTypePage';
+import NotFoundPage from './pages/NotFoundPage';
+import ErrorPage from './pages/ErrorPage';
+import {
+  ENTRIES_ROUTE,
+  ERROR_ROUTE,
+  HOME_ROUTE,
+  LOGIN_ROUTE,
+  NOT_FOUND_ROUTE,
+  REGISTER_ROUTE,
+} from './constants/routes';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/content" element={<ContentTypePage />} /> */}
-          <Route path="/entries/:id" element={<EntriesPage />} />
-          <Route path="/content-type" element={<ContentPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path={HOME_ROUTE} element={<HomePage />} />
+          <Route path={ENTRIES_ROUTE} element={<EntriesPage />} />
+          <Route path={LOGIN_ROUTE} element={<Login />} />
+          <Route path={REGISTER_ROUTE} element={<Register />} />
+          <Route path={`${ERROR_ROUTE}/:errorCode?`} element={<ErrorPage />} />
+          <Route path={NOT_FOUND_ROUTE} element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
-
-export default App;

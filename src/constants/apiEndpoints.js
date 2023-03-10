@@ -1,80 +1,93 @@
-export const BACKEND_URL = 'http://localhost:8080/';
+export const BACKEND_URL = 'http://localhost:8080';
+export const AUTH_URL = 'http://localhost:4000';
 
-export const GET_ALL_CONTENT_TYPE = {
-  url: 'contentTypes',
-  method: 'get'
-};
-
-export const CREATE_CONTENT_TYPE = {
-  url: 'contentTypes',
+export const LOGIN_URL = {
+  url: '/login',
   method: 'post'
 };
 
-export const GET_ALL_ENTRIES = {
-    url: 'entries',
+export const REGISTER_URL = {
+  url: '/register',
+  method: 'post'
+};
+
+export const CREATE_CONTENT_TYPE_URL = {
+  url: '/content_types',
+  method: 'post'
+};
+
+export const GET_CONTENT_TYPES_URL = {
+  url: '/content_types',
+  method: 'get'
+};
+
+export const GET_CONTENT_TYPE_BY_ID_URL = (id) => {
+  return {
+    url: `/content_types/${id}`,
     method: 'get'
+  };
 };
 
-export const GET_ENTRY_BY_ID =(id)=> {
-    return {
-        url: `entries/${id}`,
-        method: "get",
-      };
+export const UPDATE_CONTENT_TYPE_NAME_URL = (id) => {
+  return {
+    url: `/content_types/${id}`,
+    method: 'patch'
+  };
 };
 
-export const CREATE_ENTRY_BY_ID =(id)=> {
-    return{
-    url: `entries/${id}`,
+export const ADD_FIELD_URL = (id) => {
+  return {
+    url: `/content_types/${id}`,
     method: 'post'
-    };
+  };
 };
 
-export const GET_ALL_FIELDS_BY_CONTENT_TYPE_ID =(id)=> {
-    return {
-        url: `fields/${id}`,
-        method: 'get'
-    }
+export const DELETE_FIELD_URL = (id) => {
+  return {
+    url: `/content_types/${id}`,
+    method: 'delete'
+  };
 };
 
-export const CREATE_FIELD_BY_CONTENT_TYPE_ID =(id)=> {
-    return {
-        url: `fields/${id}`,
-        method: 'post'
-    }
+export const GET_ALL_COLLECTIONS_URL = {
+  url: '/collections',
+  method: 'get'
 };
 
-export const DELETE_ENTRY_BY_ID =(id)=> {
-    return {
-        url: `entries/${id}`,
-        method: 'delete'
-    }
-}
-
-export const UPDATE_ENTRY_BY_ID =(id)=> {
-    return {
-        url: `entries/${id}`,
-        method: 'put'
-    }
-}
-
-export const GET_ALL_FIELDS = (id) => ({
-    url: `fields/${id}`,
+export const GET_COLLECTION_BY_ID_URL = (id) => {
+  return {
+    url: `/collections/${id}`,
     method: 'get'
-});
-  
-  
-export const UPDATE_FIELD = (id) => ({
-    url: `fields/${id}`,
+  };
+};
+
+export const CREATE_ENTRY_URL = (id) => {
+  return {
+    url: `/collections/${id}/entries`,
+    method: 'post'
+  };
+};
+
+export const GET_ALL_ENTRIES_BY_COLLECTION_URL = (id) => {
+  return {
+    url: `/collections/${id}/entries`,
+    method: 'get'
+  };
+};
+
+export const UPDATE_ENTRY_URL = (collectionId, entryId) => {
+  return {
+    url: `/collections/${collectionId}/entries/${entryId}`,
     method: 'put'
-});
+  };
+};
 
-
-
-
-
-
-
-
+export const DELETE_ENTRY_URL = (collectionId, entryId) => {
+  return {
+    url: `/collections/${collectionId}/entries/${entryId}`,
+    method: 'delete'
+  };
+};
 
 
 
