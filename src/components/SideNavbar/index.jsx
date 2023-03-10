@@ -27,6 +27,13 @@ function SideNavbar() {
     
 
     const navigate = useNavigate();
+
+
+    const HandleClick = () => {
+        navigate('/content-type');
+    }
+
+
   return (
     <div className='sidebar-container'>
     <div className='sidebar-header'>CMS+</div>
@@ -46,7 +53,7 @@ function SideNavbar() {
        }
         )}
       </div>
-      <div className="builder active">CONTENT TYPE BUILDER</div>
+      <div  className="builder active"><button onClick={HandleClick}> CONTENT TYPE BUILDER</button></div>
     </div>
   </div>
   );

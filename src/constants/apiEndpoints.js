@@ -57,6 +57,16 @@ export const UPDATE_ENTRY_BY_ID =(id)=> {
     }
 }
 
+export const GET_ALL_FIELDS = (id) => ({
+    url: `fields/${id}`,
+    method: 'get'
+});
+  
+  
+export const UPDATE_FIELD = (id) => ({
+    url: `fields/${id}`,
+    method: 'put'
+});
 
 
 
