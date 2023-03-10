@@ -43,4 +43,31 @@ export const CREATE_FIELD_BY_CONTENT_TYPE_ID =(id)=> {
     }
 };
 
+export const DELETE_ENTRY_BY_ID =(id)=> {
+    return {
+        url: `entries/${id}`,
+        method: 'delete'
+    }
+}
+
+export const UPDATE_ENTRY_BY_ID =(id)=> {
+    return {
+        url: `entries/${id}`,
+        method: 'put'
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

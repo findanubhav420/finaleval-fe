@@ -1,8 +1,11 @@
 import React from 'react';
 import './SideModal.css';
 import PropTypes from 'prop-types';
+import FieldLabel from '../fieldLabel';
 
-export default function SideModal({ setIsOpen }) {
+export default function SideModal({ setIsOpen , entry, fieldList}) {
+
+  console.log(entry)
   return (
     <>
       <div className="dark-bg" onClick={() => setIsOpen(false)} />
@@ -11,8 +14,18 @@ export default function SideModal({ setIsOpen }) {
           <div className="modal-header">
             <h5 className='heading'>New Company_Profile</h5>
           </div>
-          <div className="modal-content">Name</div>
-          <input type="text" className="modal-input" />
+          <div className='search'>
+          {
+            fieldList && fieldList.map((field) => {
+              return (
+                <>
+                <FieldLabel className="modal-content" field={field}/>
+                <input type="text" className="modal-input" />
+                </>
+              );
+            })
+          }
+          </div>
 
           <div className="modal-actions">
             <div className="actions-container">

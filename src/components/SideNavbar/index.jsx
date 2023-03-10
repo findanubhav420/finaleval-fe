@@ -15,16 +15,16 @@ function SideNavbar() {
         // if(!token) {
         //     navigate('/login');
         // }
-        
-      makeRequest(GET_ALL_CONTENT_TYPE)
-        .then((response) => {
-          setContentList(response.data);
-        }
-        ).catch((error) => {
-          console.log(error);
-        }
-        );
+        const response = makeRequest(GET_ALL_CONTENT_TYPE).then(
+            (response) => {
+                // console.log(response);
+                setContentList(response);
+                return response;
+            }
+        );    
     }, []);
+    
+    
 
     const navigate = useNavigate();
   return (
@@ -32,26 +32,19 @@ function SideNavbar() {
     <div className='sidebar-header'>CMS+</div>
     <div className="collections-container">
       <div className="collection-header">
-        <p style={{fontSize: '0.9rem'}}>COLLECTION TYPES</p>
+        <h1>COLLECTION TYPES</h1>
         <AiOutlineSearch />
       </div>
       <div className='collection-list'>
-        <div className='active list-item'>
-          <BsCircleFill size={8}/>
-          Company_Profile
-        </div>
-        <div className='list-item'>
-          <BsCircleFill size={8}/>
-          Company_Profile
-        </div>
-        <div className='list-item'>
-          <BsCircleFill size={8}/>
-          Company_Profile
-        </div>
-        <div className='list-item'>
-          <BsCircleFill size={8}/>
-          Company_Profile
-        </div>
+       {contentList && contentList.map((content) => {
+          return (
+            <div className="collection-item" onClick={() => navigate(`/entries/${content.content_id}`)}>
+              <BsCircleFill className='circle-icon'/>
+              <div className="collection-name">{content.content_title}</div>
+            </div>
+          );
+       }
+        )}
       </div>
       <div className="builder active">CONTENT TYPE BUILDER</div>
     </div>

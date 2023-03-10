@@ -1,15 +1,17 @@
 import React from "react";
 import SideNavbar from "../../components/SideNavbar";
 import Header from "../../components/Header";
-import ContentTypeBody from "../../components/ContentTypeBody";
-import "./ContentTypePage.css";
+import EntryBody from "../../components/EntryBody";
+import { useParams } from "react-router-dom";
+import "./EntriesPage.css";
 function Entries() {
+  const {id} = useParams();
     return (
         <div className="homepage-container">
-        <SideNavbar />
+        <SideNavbar id={id}/>
         <div className="right-side-container">
-          <Header />
-          <ContentTypeBody/>
+          <Header id={id}/>
+          <EntryBody id={id}/>
         </div>
       </div>
     );

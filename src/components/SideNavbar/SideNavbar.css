@@ -27,6 +27,14 @@
     color: whitesmoke;
     font-weight: 400;
 }
+.collection-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 10px;
+    
+}
 .builder{
     color: white;
     font-size: 0.9rem;

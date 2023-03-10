@@ -18,9 +18,6 @@
         "react"
     ],
     "rules": {
-        "react/jsx-filename-extension": [1, {
-            "extensions": [".js", ".jsx"]}
-        ],
         "indent": [
             "error",
             2
@@ -37,10 +34,5 @@
             "error",
             "always"
         ]
-    },
-    "settings": {
-        "react": {
-          "version": "detect"
-        }
-      }
+    }
 }
