@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 import React, { useState, useEffect } from 'react';
-import './Builder.css';
+import './ContentTypeBody.css';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FiEdit2 } from 'react-icons/fi';
 import ContentType from '../ContentType';
@@ -9,14 +9,14 @@ import Modal from '../Modal';
 import { useNavigate } from 'react-router-dom';
 import { makeRequest } from '../../utils/makeRequest';
 import {
-  ADD_FIELD_URL,
-  CREATE_CONTENT_TYPE_URL,
-  DELETE_FIELD_URL,
-  GET_CONTENT_TYPES_URL,
-  UPDATE_CONTENT_TYPE_NAME_URL,
+  UPDATE_FIELD,
+  CREATE_CONTENT_TYPE,
+  DELETE_FIELD,
+  GET_CONTENT_TYPES,
+  UPDATE_CONTENT_TYPE_NAME,
 } from '../../constants/apiEndPoints';
 
-export default function Builder() {
+export default function ContentTypeBody() {
   const navigate = useNavigate();
   const [fieldList, setFieldList] = useState([]);
   const [selectedContentType, setSelectedContentType] = useState({});
@@ -26,7 +26,7 @@ export default function Builder() {
   };
   useEffect(() => {
     if (localStorage.getItem('token') === null) navigate('/login');
-    makeRequest(GET_CONTENT_TYPES_URL, navigate).then((res) => {
+    makeRequest(GET_CONTENT_TYPES, navigate).then((res) => {
       setContentTypes(res);
       console.log(res);
       if(res){
@@ -44,7 +44,7 @@ export default function Builder() {
   }, [selectedContentType]);
 
   const addContentTypesHandler = (name) => {
-    makeRequest(CREATE_CONTENT_TYPE_URL, navigate, {
+    makeRequest(CREATE_CONTENT_TYPE, navigate, {
       data: {
         name,
       },
@@ -54,7 +54,7 @@ export default function Builder() {
   };
 
   const addFieldHandler = (name, type) => {
-    makeRequest(ADD_FIELD_URL(selectedContentType?.id), navigate, {
+    makeRequest(UPDATE_FIELD(selectedContentType?.id), navigate, {
       data: {
         name,
         type,
@@ -67,7 +67,7 @@ export default function Builder() {
   };
 
   const deleteFieldHandler = (name) => {
-    makeRequest(DELETE_FIELD_URL(selectedContentType?.id), navigate, {
+    makeRequest(DELETE_FIELD(selectedContentType?.id), navigate, {
       data: {
         name,
       },
@@ -79,7 +79,7 @@ export default function Builder() {
   };
   const updateContentTypeNameHandler = (name) => {
     makeRequest(
-      UPDATE_CONTENT_TYPE_NAME_URL(selectedContentType?.id),
+      UPDATE_CONTENT_TYPE_NAME(selectedContentType?.id),
       navigate,
       {
         data: {
@@ -142,18 +142,12 @@ export default function Builder() {
         {selectedContentType && (
           <>
             <div className="new-file">
-              <p
-                style={{
-                  fontSize: '1.2rem',
-                  fontWeight: '600',
-                  color: 'rgb(79, 79, 79)',
-                }}
-              >
+              <p id="content-type-name">
                 {selectedContentType?.name}
               </p>
               <FiEdit2 size={12} onClick={showEditContentTypeNameModal} />
             </div>
-            <p style={{ fontSize: '0.9rem', color: 'rgb(79, 79, 79)' }}>
+            <p id="content-field">
               {selectedContentType?.fields && fieldList.length} Fields
             </p>
           </>

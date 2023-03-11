@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { makeAuthRequest } from '../../utils/makeRequest';
-import { REGISTER_URL } from '../../constants/apiEndPoints';
+import { REGISTER } from '../../constants/apiEndPoints';
 import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css';
 import heroImage from '../../assets/hero-image.png';
@@ -13,7 +13,7 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleRegister = async () => {
-    await makeAuthRequest(REGISTER_URL, navigate, {
+    await makeAuthRequest(REGISTER, navigate, {
       data: {
         email: email,
         password: password,

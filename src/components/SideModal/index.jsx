@@ -67,13 +67,13 @@ export default function SideModal({
   );
 }
 
-SideModal.propTypes = {
-  setIsOpen: PropTypes.func.isRequired,
-  fieldsList: PropTypes.array.isRequired,
-  handleFormSubmit: PropTypes.func.isRequired,
-  heading: PropTypes.string.isRequired,
-  content: PropTypes.object.isRequired,
-  handleUpdateEntry: PropTypes.func.isRequired,
-  update: PropTypes.bool.isRequired,
-  entryId: PropTypes.number.isRequired
-};
+// SideModal.propTypes = {
+//   setIsOpen: PropTypes.func,
+//   fieldsList: PropTypes.array,
+//   handleFormSubmit: PropTypes.func,
+//   heading: PropTypes.string,
+//   content: PropTypes.object,
+//   handleUpdateEntry: PropTypes,
+//   update: PropTypes.bool,
+//   entryId: PropTypes.number
+// };

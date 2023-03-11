@@ -22,15 +22,15 @@ export default function ContentType({
   );
 }
 
-ContentType.propTypes = {
-  contentType: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    fields: PropTypes.arrayOf({
-      name: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-  isActive: PropTypes.bool.isRequired,
-  selectedContentTypeHandler: PropTypes.func.isRequired,
-};
+// ContentType.propTypes = {
+//   contentType: PropTypes.shape({
+//     id: PropTypes.string,
+//     name: PropTypes.string,
+//     fields: PropTypes.arrayOf({
+//       name: PropTypes.string,
+//       type: PropTypes.string,
+//     }),
+//   }),
+//   isActive: PropTypes.bool,
+//   selectedContentTypeHandler: PropTypes.func,
+// };

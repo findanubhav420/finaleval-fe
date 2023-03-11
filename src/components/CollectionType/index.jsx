@@ -6,12 +6,12 @@ import PropTypes from 'prop-types';
 import { useParams, useNavigate } from 'react-router-dom';
 import { makeRequest } from '../../utils/makeRequest';
 import {
-  CREATE_ENTRY_URL,
-  DELETE_ENTRY_URL,
-  UPDATE_ENTRY_URL,
-  GET_ALL_ENTRIES_BY_COLLECTION_URL,
-  GET_COLLECTION_BY_ID_URL,
-  GET_CONTENT_TYPE_BY_ID_URL,
+  CREATE_ENTRY,
+  DELETE_ENTRY,
+  UPDATE_ENTRY,
+  GET_ALL_ENTRIES_BY_COLLECTION,
+  GET_COLLECTION_BY_ID,
+  GET_CONTENT_TYPE_BY_ID,
 } from '../../constants/apiEndPoints';
 
 export default function CollectionType() {
@@ -21,12 +21,12 @@ export default function CollectionType() {
   const { collectionId } = useParams();
   const [entries, setEntries] = useState([]);
   useEffect(() => {
-    makeRequest(GET_ALL_ENTRIES_BY_COLLECTION_URL(collectionId), navigate).then(
+    makeRequest(GET_ALL_ENTRIES_BY_COLLECTION(collectionId), navigate).then(
       (data) => setEntries(data)
     );
-    makeRequest(GET_COLLECTION_BY_ID_URL(collectionId), navigate).then((data) =>
+    makeRequest(GET_COLLECTION_BY_ID(collectionId), navigate).then((data) =>
       makeRequest(
-        GET_CONTENT_TYPE_BY_ID_URL(data?.content_type_id),
+        GET_CONTENT_TYPE_BY_ID(data?.content_type_id),
         navigate
       ).then((data) => {
         const fields = Object.keys(data?.fields);
@@ -37,7 +37,7 @@ export default function CollectionType() {
   }, [collectionId]);
 
   const handleCreateEntry = async (newContentEntry) => {
-    const response = await makeRequest(CREATE_ENTRY_URL(collectionId), navigate, {
+    const response = await makeRequest(CREATE_ENTRY(collectionId), navigate, {
       data: {
         content_type_entries: newContentEntry,
       },
@@ -46,13 +46,13 @@ export default function CollectionType() {
   };
 
   const handleDeleteEntry = async(entryId) => {
-    await makeRequest(DELETE_ENTRY_URL(collectionId, entryId), navigate);
+    await makeRequest(DELETE_ENTRY(collectionId, entryId), navigate);
     const newEntries = entries?.filter((entry) => entry.id !== entryId);
     setEntries(newEntries);
   };
 
   const handleUpdateEntry = async (entryId, newContentEntry) => {
-    const response = await makeRequest(UPDATE_ENTRY_URL(collectionId, entryId), navigate, {
+    const response = await makeRequest(UPDATE_ENTRY(collectionId, entryId), navigate, {
       data: {
         content_type_entries: newContentEntry,
       },
@@ -101,5 +101,5 @@ export default function CollectionType() {
 }
 
 CollectionType.propTypes = {
-  entries: PropTypes.array.isRequired,
+  entries: PropTypes.array,
 };

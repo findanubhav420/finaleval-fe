@@ -3,7 +3,7 @@ import './Sidebar.css';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BsCircleFill } from 'react-icons/bs';
 import { makeRequest } from '../../utils/makeRequest';
-import { GET_ALL_COLLECTIONS_URL } from '../../constants/apiEndPoints';
+import { GET_ALL_COLLECTIONS } from '../../constants/apiEndPoints';
 import { useNavigate, NavLink, useParams } from 'react-router-dom';
 
 export default function Sidebar() {
@@ -12,7 +12,7 @@ export default function Sidebar() {
   const { collectionId } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
-    makeRequest(GET_ALL_COLLECTIONS_URL, navigate).then((data) =>
+    makeRequest(GET_ALL_COLLECTIONS, navigate).then((data) =>
       setCollections(data)
     );
   }, []);
